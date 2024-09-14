@@ -19,7 +19,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class armyEntity {
+public class teukgiCodeEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
