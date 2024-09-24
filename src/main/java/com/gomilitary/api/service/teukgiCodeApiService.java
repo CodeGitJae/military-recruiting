@@ -1,6 +1,7 @@
 package com.gomilitary.api.service;
 
 import java.io.BufferedInputStream;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -25,6 +26,13 @@ public class teukgiCodeApiService {
     @Value("${data.portal.authentication.encoded}")
     private String encodedKey;
      
+	public List<teukgiCodeEntity> getSavedData() {
+//		System.out.println(teukgiCocdApiRepository.findAll());	
+		return teukgiCocdApiRepository.findAll();
+	}
+
+
+	// API 데이터 호출 메서드
     public void getApiData() {
         try {
 	        StringBuilder url = new StringBuilder("https://apis.data.go.kr/1300000/MJBGJWJeopSuHH4/list?"); /*URL*/
@@ -34,8 +42,8 @@ public class teukgiCodeApiService {
 	        url.append("&pageNo="+URLEncoder.encode("1", "UTF-8"));
 	        
 	        System.out.println("==========url print=========="+url.toString());
-
-        	getInfo(url.toString());
+	
+			getInfo(url.toString());
         }
 		catch(Exception e) {
 			e.printStackTrace();
